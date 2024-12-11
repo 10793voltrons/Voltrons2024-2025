@@ -103,7 +103,7 @@ public class IntoTheDeepExpo extends LinearOpMode {
 
             /** SERVO QUE LEVANTA Y BAJA EL LANZADOR 3 POSICIONES**/
             if (gamepad1.a && aButton.milliseconds() > 300) {
-                wrist.setPosition(wristFront);
+                wrist.setPosition(wristBack);
                 bump2.reset();
             }
 

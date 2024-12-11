@@ -25,6 +25,7 @@ public class IntoTheDeep extends LinearOpMode {
     DcMotor leftFront;
     DcMotor rightFront;
     DcMotor arm;
+    DcMotor slide2;
     DcMotor leftBack;
     DcMotor rightBack;
     DcMotor slide;
@@ -47,6 +48,7 @@ public class IntoTheDeep extends LinearOpMode {
     public static double garraDrop = 0.3;
 
     //Timers de botones
+
 
     ElapsedTime aButton = new ElapsedTime();
     ElapsedTime bButton = new ElapsedTime();
@@ -75,6 +77,8 @@ public class IntoTheDeep extends LinearOpMode {
         rightBack = hardwareMap.dcMotor.get("br");
         slide = hardwareMap.dcMotor.get("slide");
         arm = hardwareMap.dcMotor.get("arm");
+        slide2
+                = hardwareMap.dcMotor.get("slide2");
         wrist = hardwareMap.servo.get("wrist");
         wall = hardwareMap.servo.get("wall");
         garra = hardwareMap.servo.get("garra");
@@ -86,6 +90,7 @@ public class IntoTheDeep extends LinearOpMode {
         // Invertimos los motores de fabrica
         rightBack.setDirection(DcMotorSimple.Direction.REVERSE);
         rightFront.setDirection(DcMotorSimple.Direction.REVERSE);
+        slide2.setDirection(DcMotorSimple.Direction.REVERSE);
 
         // Hacemos esto para que por defecto, cuando alguien deje de mover el stick de motor, se frenen todos los motores y no se quede patinando
         leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -94,6 +99,7 @@ public class IntoTheDeep extends LinearOpMode {
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
 
         // Iniciamos los temporizadores
         aButton.reset();
@@ -218,17 +224,21 @@ public class IntoTheDeep extends LinearOpMode {
             if(gamepad2.left_trigger>0)
             {
                 slide.setPower(-linearSlidePowerMultiplier);
+                slide2.setPower(-linearSlidePowerMultiplier);
             }
             else if(gamepad2.right_trigger>0)
             {
                 slide.setPower(linearSlidePowerMultiplier*0.75);
+                slide2.setPower(linearSlidePowerMultiplier*0.75);
             }
             else{
                 slide.setPower(0);
+                slide2.setPower(0);
             }
 
             if(gamepad1.dpad_up && dpad_up.milliseconds()>100 )
             {
+
                 arm.setPower(-linearSlidePowerMultiplier);
             }
             else if(gamepad1.dpad_down && dpad_down.milliseconds()>100 )

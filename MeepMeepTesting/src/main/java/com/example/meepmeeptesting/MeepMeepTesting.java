@@ -26,20 +26,18 @@ public class MeepMeepTesting {
                         .strafeTo(new Vector2d(36, -40))
                         .back(32)
                         .strafeLeft(10)
-                        .lineTo(new Vector2d(46,-50))
-                        .lineTo(new Vector2d(46, -8))
-                        .strafeTo(new Vector2d(58, -8))
-                        .lineTo(new Vector2d(58,-50))
-                        .lineTo(new Vector2d(58,-8))
-                        .lineToLinearHeading(new Pose2d(24, -8, Math.toRadians(0)))
-                        //.forward(30)
-                        /*.turn(Math.toRadians(90))
-                        .forward(30)
-                        .turn(Math.toRadians(90))
-                        .forward(30)
-                        .turn(Math.toRadians(90))
-                        .forward(30)
-                        .turn(Math.toRadians(90))*/
+                        .lineTo(new Vector2d(50,-50))
+                        .lineTo(new Vector2d(50, -38))
+                        .strafeTo(new Vector2d(58, -50))
+                        //.lineTo(new Vector2d(58,-50))
+                        .lineToLinearHeading(new Pose2d(47,-50, Math.toRadians(90)))
+                        //.strafeTo(new Vector2d(47, -50))
+                        /**de aquí a colgarlo de nuevo**/
+                        .strafeTo(new Vector2d(5,-36))
+
+                        //.lineTo(new Vector2d(58,-8))
+                        //.lineToLinearHeading(new Pose2d(24, -8, Math.toRadians(0)))
+
                         .build());
 
 
