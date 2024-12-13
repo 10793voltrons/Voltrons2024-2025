@@ -29,6 +29,7 @@ public class IntoTheDeep extends LinearOpMode {
     DcMotor leftBack;
     DcMotor rightBack;
     DcMotor slide;
+    DcMotor jack;
     Servo lanzador;
     Servo wrist;
     Servo wall;
@@ -77,8 +78,8 @@ public class IntoTheDeep extends LinearOpMode {
         rightBack = hardwareMap.dcMotor.get("br");
         slide = hardwareMap.dcMotor.get("slide");
         arm = hardwareMap.dcMotor.get("arm");
-        slide2
-                = hardwareMap.dcMotor.get("slide2");
+        slide2 = hardwareMap.dcMotor.get("slide2");
+        jack = hardwareMap.dcMotor.get("jack");
         wrist = hardwareMap.servo.get("wrist");
         wall = hardwareMap.servo.get("wall");
         garra = hardwareMap.servo.get("garra");
@@ -99,6 +100,7 @@ public class IntoTheDeep extends LinearOpMode {
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        jack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
         // Iniciamos los temporizadores
@@ -248,6 +250,23 @@ public class IntoTheDeep extends LinearOpMode {
             else{
                 arm.setPower(0);
             }
+
+            /** Subir el jack para elevar el motor **/
+            if(gamepad1.right_trigger>0)
+            {
+                jack.setPower(1);
+            }else{
+
+                jack.setPower(0);
+            }
+            if (gamepad1.left_trigger>0)
+            {
+                jack.setPower(-1);
+            }else{
+
+                jack.setPower(0);
+            }
+
 
 
             telemetry.addData("Invert", invert);

@@ -66,7 +66,7 @@ public class ITD_2Specimens extends LinearOpMode {
                 .build();
 
         TrajectorySequence traj5 = drive.trajectorySequenceBuilder(traj4.end())
-                .back(36)
+                .back(32)  //Ajuste de distancia para llegar al primer sample
                 .build();
 
         TrajectorySequence traj6 = drive.trajectorySequenceBuilder(traj5.end())
@@ -93,6 +93,13 @@ public class ITD_2Specimens extends LinearOpMode {
         TrajectorySequence traj11 = drive.trajectorySequenceBuilder(traj10.end())
                 .lineToLinearHeading(new Pose2d(50,-45, Math.toRadians(90)))
                 .build();
+
+        /** Movimiento a la derecha para agarrar especimen **/
+        TrajectorySequence traj11_1 = drive.trajectorySequenceBuilder(traj11.end())
+                .strafeLeft(2)
+                .build();
+
+
 
         /** Movimientos para ir a colgarlo **/
 
@@ -122,8 +129,8 @@ public class ITD_2Specimens extends LinearOpMode {
         sleep(1200);
 
         /** TODO: Agregar parte de la garra y colgar **/
-        drive.setMotorPowers(-0.3,-0.3,-0.3,-0.3);
-        sleep(800);
+        drive.setMotorPowers(-0.4,-0.4,-0.4,-0.4);
+        sleep(600);
         drive.setMotorPowers(0,0,0,0);
         sleep(200);
 
@@ -162,14 +169,15 @@ public class ITD_2Specimens extends LinearOpMode {
         drive.followTrajectorySequence(traj9);
         drive.followTrajectorySequence(traj10);
         drive.followTrajectorySequence(traj11);
+        drive.followTrajectorySequence(traj11_1);
 
         /** Se mueve a agarrar el especimen en el perímetro **/
         drive.setMotorPowers(-0.4,-0.4,-0.4,-0.4);
-        sleep(800);
+        sleep(700);
         drive.setMotorPowers(0,0,0,0);
         sleep(100);
         wall.setPosition(wallGrab);
-        sleep(600);
+        sleep(700);
 
         /** levanta especimen para colgarlo **/
         slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -182,7 +190,7 @@ public class ITD_2Specimens extends LinearOpMode {
         slide2.setPower(0.8);
         slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         slide2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        sleep(500);
+        sleep(400);
         drive.followTrajectorySequence(traj12);
 
         /** Acercarse a colgar el especimen **/
@@ -200,14 +208,14 @@ public class ITD_2Specimens extends LinearOpMode {
         slide2.setPower(0.8);
         slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         slide2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        sleep(300);
+        sleep(200);
         wall.setPosition(wallDrop);
         sleep(100);
 
         drive.setMotorPowers(-0.4,-0.4,-0.4,-0.4);
-        sleep(200);
+        sleep(300);
         drive.setMotorPowers(0,0,0,0);
-        sleep(50);
+        sleep(100);
 
 
 
