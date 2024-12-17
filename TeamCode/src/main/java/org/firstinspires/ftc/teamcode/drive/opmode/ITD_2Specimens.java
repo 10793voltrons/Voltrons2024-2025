@@ -16,7 +16,7 @@ import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
  * This is an example of a more complex path to really test the tuning.
  */
 @Config
-@Autonomous(group = "drive")
+@Autonomous(name = "Right_ITD_2Specimen", group = "drive")
 public class ITD_2Specimens extends LinearOpMode {
 
     DcMotor slide;
@@ -57,7 +57,7 @@ public class ITD_2Specimens extends LinearOpMode {
                 .build();
 
         TrajectorySequence traj3 = drive.trajectorySequenceBuilder(traj2.end()) //Separarse del sumergible
-                .waitSeconds(1)
+                //.waitSeconds(1)
                 .forward(10)
                 .build();
 
@@ -103,8 +103,8 @@ public class ITD_2Specimens extends LinearOpMode {
 
         /** Movimientos para ir a colgarlo **/
 
-        TrajectorySequence traj12 = drive.trajectorySequenceBuilder(traj11.end())   //Regresar a sumergible con Especimen a colgar
-                .lineToLinearHeading(new Pose2d(-3,-36, Math.toRadians(-90)))
+        TrajectorySequence traj12 = drive.trajectorySequenceBuilder(traj11_1.end())   //Regresar a sumergible con Especimen a colgar
+                .lineToLinearHeading(new Pose2d(-3,-40, Math.toRadians(-90)))
                 .build();
 
         waitForStart();
@@ -173,7 +173,7 @@ public class ITD_2Specimens extends LinearOpMode {
 
         /** Se mueve a agarrar el especimen en el perímetro **/
         drive.setMotorPowers(-0.6,-0.6,-0.6,-0.6);
-        sleep(600);
+        sleep(650);
         drive.setMotorPowers(0,0,0,0);
         sleep(100);
         wall.setPosition(wallGrab);
@@ -195,7 +195,7 @@ public class ITD_2Specimens extends LinearOpMode {
 
         /** Acercarse a colgar el especimen **/
         drive.setMotorPowers(-0.4,-0.4,-0.4,-0.4);
-        sleep(800);
+        sleep(700);
         drive.setMotorPowers(0,0,0,0);
         sleep(200);
 
@@ -208,9 +208,9 @@ public class ITD_2Specimens extends LinearOpMode {
         slide2.setPower(0.8);
         slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         slide2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        sleep(300);
+        sleep(350);
         wall.setPosition(wallDrop);
-        sleep(100);
+        sleep(200);
 
         drive.setMotorPowers(0.4,0.4,0.4,0.4);
         sleep(300);
