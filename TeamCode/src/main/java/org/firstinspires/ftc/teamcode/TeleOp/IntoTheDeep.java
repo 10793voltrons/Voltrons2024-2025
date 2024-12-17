@@ -49,6 +49,7 @@ public class IntoTheDeep extends LinearOpMode {
     public static double garraDrop = 0.3;
 
     //Timers de botones
+    public static int cuelga = 0;
 
 
     ElapsedTime aButton = new ElapsedTime();
@@ -67,6 +68,7 @@ public class IntoTheDeep extends LinearOpMode {
     ElapsedTime aButton2 = new ElapsedTime();
     ElapsedTime bButton2 = new ElapsedTime();
     ElapsedTime yButton2 = new ElapsedTime();
+    ElapsedTime bButton1 = new ElapsedTime();
 
     @Override
     public void runOpMode() throws InterruptedException {
@@ -120,6 +122,7 @@ public class IntoTheDeep extends LinearOpMode {
         dpad2_up.reset();
         dpad2_down.reset();
         dpad2_left.reset();
+        bButton1.reset();
 
         double invert = 1;
         double adjust = 10;
@@ -128,6 +131,7 @@ public class IntoTheDeep extends LinearOpMode {
         int wAbierto1 = 0;
         int wPos = 0;
         int gAbierto1 = 0;
+
 
         wall.setPosition(wallGrab);
         wAbierto1 = 1;
@@ -172,6 +176,20 @@ public class IntoTheDeep extends LinearOpMode {
                     invert = 1;
                 }
                 yButton.reset();
+            }
+
+            /** Mover slides para colgar **/
+            if (gamepad1.b && cuelga == 0) {
+                cuelga = 1;
+            }
+
+            if (gamepad1.b && cuelga == 1) {
+                cuelga = 0;
+            }
+
+            if (cuelga == 1 ){
+                slide.setPower(-1);
+                slide2.setPower(-1);
             }
 
 
