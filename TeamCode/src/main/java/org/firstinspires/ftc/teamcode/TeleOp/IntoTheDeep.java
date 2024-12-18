@@ -41,7 +41,7 @@ public class IntoTheDeep extends LinearOpMode {
 
     public static double wallGrab = 1;
     public static double wallDrop = 0.5;
-    public static double linearSlidePowerMultiplier = 0.6;
+    public static double linearSlidePowerMultiplier = 0.8;
     public static double servoCentered = 0.6;
     public static double servoleft = 0.3;
     public static double servoright = 0.9;
@@ -180,11 +180,23 @@ public class IntoTheDeep extends LinearOpMode {
 
             /** Mover slides para colgar **/
             if (gamepad1.b && cuelga == 0) {
-                cuelga = 1;
+                slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                slide2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                slide.setTargetPosition(-1300);
+                slide2.setTargetPosition(-1300);
+                slide.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                slide2.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                slide.setPower(0.8);
+                slide2.setPower(0.8);
+                slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+                slide2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
+                sleep(10000);
             }
 
             if (gamepad1.b && cuelga == 1) {
-                cuelga = 0;
+                slide.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+                slide2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
             }
 
             if (cuelga == 1 ){
