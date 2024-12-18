@@ -16,8 +16,8 @@ import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
  * This is an example of a more complex path to really test the tuning.
  */
 @Config
-@Autonomous(name= "Left_ITD", group = "drive")
-public class Left_ITD_2Specimens extends LinearOpMode {
+@Autonomous(name= "Left_Delay_ITD", group = "drive")
+public class Left_delay_ITD extends LinearOpMode {
 
     DcMotor slide;
     DcMotor slide2;
@@ -50,6 +50,7 @@ public class Left_ITD_2Specimens extends LinearOpMode {
 
         /** Creando las trayectorias **/
         TrajectorySequence traj1 = drive.trajectorySequenceBuilder(startPose) // Moverse al sumergible
+                .waitSeconds(8)
                 .strafeTo(new Vector2d(-5, -36))
                 .build();
 
@@ -91,19 +92,19 @@ public class Left_ITD_2Specimens extends LinearOpMode {
                 .lineTo(new Vector2d(-60,-52))
                 .build();
 
-        TrajectorySequence traj11 = drive.trajectorySequenceBuilder(traj10.end()) //Regresar por tercer Sample
+        TrajectorySequence traj11 = drive.trajectorySequenceBuilder(traj10.end()) //Regresar por tercer Sample  NO SE USA
                 .lineTo(new Vector2d(-60,-15))
                 .build();
 
-        TrajectorySequence traj12 = drive.trajectorySequenceBuilder(traj11.end()) //Colocandose a empujar Sample
+        TrajectorySequence traj12 = drive.trajectorySequenceBuilder(traj11.end()) //Colocandose a empujar Sample NO SE USA
                 .strafeTo(new Vector2d(-66, -15))
                 .build();
 
-        TrajectorySequence traj13 = drive.trajectorySequenceBuilder(traj12.end()) //Empujando Sample a Net Zone
+        TrajectorySequence traj13 = drive.trajectorySequenceBuilder(traj12.end()) //Empujando Sample a Net Zone NO SE USA
                 .lineTo(new Vector2d(-66,-49))
                 .build();
 
-        TrajectorySequence traj14 = drive.trajectorySequenceBuilder(traj13.end())
+        TrajectorySequence traj14 = drive.trajectorySequenceBuilder(traj9.end())   //Moverse al Sumergible
                 .lineToLinearHeading(new Pose2d(-24,-5, Math.toRadians(180)))
                 .build();
 
@@ -178,9 +179,9 @@ public class Left_ITD_2Specimens extends LinearOpMode {
         drive.followTrajectorySequence(traj8);
         drive.followTrajectorySequence(traj9);
         drive.followTrajectorySequence(traj10);
-        drive.followTrajectorySequence(traj11);
-        drive.followTrajectorySequence(traj12);
-        drive.followTrajectorySequence(traj13);
+        //drive.followTrajectorySequence(traj11);
+        //drive.followTrajectorySequence(traj12);
+        //drive.followTrajectorySequence(traj13);
         drive.followTrajectorySequence(traj14);
 
 
