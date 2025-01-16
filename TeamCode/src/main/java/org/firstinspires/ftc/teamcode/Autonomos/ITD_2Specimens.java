@@ -1,13 +1,13 @@
-package org.firstinspires.ftc.teamcode.drive.opmode;
+package org.firstinspires.ftc.teamcode.Autonomos;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.acmerobotics.roadrunner.geometry.Vector2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
-import com.acmerobotics.dashboard.config.Config;
 
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
@@ -15,8 +15,8 @@ import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 /*
  * This is an example of a more complex path to really test the tuning.
  */
-@Config
-@Autonomous(name = "Right_ITD_2Specimen", group = "drive")
+@Disabled
+@Autonomous(name = "Right_ITD_2Specimen_OBSOLET", group = "drive")
 public class ITD_2Specimens extends LinearOpMode {
 
     DcMotor slide;

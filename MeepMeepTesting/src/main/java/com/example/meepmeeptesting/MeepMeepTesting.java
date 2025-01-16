@@ -14,16 +14,18 @@ public class MeepMeepTesting {
         RoadRunnerBotEntity myBot = new DefaultBotBuilder(meepMeep)
                 // Set bot constraints: maxVel, maxAccel, maxAngVel, maxAngAccel, track width
                 .setConstraints(60, 60, Math.toRadians(180), Math.toRadians(180), 15)
-                .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(-24, -60, Math.toRadians(-90)))
-                        .strafeTo(new Vector2d(-5, -36))
+                .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(17, -60, Math.toRadians(-90)))
+                        .strafeTo(new Vector2d(3, -36))
                         .back(3)
                         .forward(10)
 
                         /** TODO: Agregar parte de la garra y colgar **/
+                        .lineToLinearHeading(new Pose2d(50,-56, Math.toRadians(90)))
+                        //agarra
+                        .lineToLinearHeading(new Pose2d(3,-36, Math.toRadians(-90)))
 
-                        .splineToConstantHeading(new Vector2d(-36, -50),Math.toRadians(-90))
-                        .back(40)
-                        .strafeRight(10)
+                        /*.strafeRight(10)
+                        .splineToConstantHeading(new Vector2d(46, 0),Math.toRadians(-90))
                         .lineTo(new Vector2d(-46,-55))
                         .lineTo(new Vector2d(-46,-10))
                         .strafeRight(10)
@@ -31,7 +33,7 @@ public class MeepMeepTesting {
                         .lineTo(new Vector2d(-56,-10))
                         .strafeRight(5)
                         .lineTo(new Vector2d(-61,-55))
-                        .lineToLinearHeading(new Pose2d(-24,0, Math.toRadians(0)))
+                        .lineToLinearHeading(new Pose2d(-24,0, Math.toRadians(0)))*/
 
 
                         /*

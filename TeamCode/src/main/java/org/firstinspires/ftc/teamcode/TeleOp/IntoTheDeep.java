@@ -101,6 +101,7 @@ public class IntoTheDeep extends LinearOpMode {
         leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         //slide.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        //slide2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         jack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
@@ -260,17 +261,17 @@ public class IntoTheDeep extends LinearOpMode {
             }
             else if(gamepad2.right_trigger>0)
             {
-                slide.setPower(linearSlidePowerMultiplier*0.75);
-                slide2.setPower(linearSlidePowerMultiplier*0.75);
+                slide.setPower(linearSlidePowerMultiplier*0.8);
+                slide2.setPower(linearSlidePowerMultiplier*0.8);
             }
-            else{
-                slide.setPower(0);
-                slide2.setPower(0);
+            else
+            {
+                slide.setPower(0.02);
+                slide2.setPower(0.02);
             }
 
             if(gamepad1.dpad_up && dpad_up.milliseconds()>100 )
             {
-
                 arm.setPower(-linearSlidePowerMultiplier);
             }
             else if(gamepad1.dpad_down && dpad_down.milliseconds()>100 )
